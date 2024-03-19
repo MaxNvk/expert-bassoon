@@ -9,9 +9,10 @@ import {
 import { Task } from './task.entity';
 import { DataSource } from 'typeorm';
 import { TasksRepository } from './tasks.repository';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Task])],
+  imports: [TypeOrmModule.forFeature([Task]), AuthModule],
   controllers: [TasksController],
   providers: [
     {
