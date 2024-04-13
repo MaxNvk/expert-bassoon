@@ -6,12 +6,12 @@ import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { User } from '../auth/user.entity';
 import { InternalServerErrorException, Logger } from '@nestjs/common';
 
-export interface ITaskRepository extends Repository<Task> {
+export interface ITasksRepository extends Repository<Task> {
   this: Repository<Task>;
   getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]>;
   createTask(payload: CreateTaskDto, user: User): Promise<Task>;
 }
-export const TasksRepository: Pick<ITaskRepository, any> = {
+export const TasksRepository: Pick<ITasksRepository, any> = {
   async getTasks(
     { status, search }: GetTasksFilterDto,
     user: User,

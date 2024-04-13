@@ -4,14 +4,14 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
-import { ITaskRepository } from './tasks.repository';
+import { ITasksRepository } from './tasks.repository';
 import { User } from '../auth/user.entity';
 
 @Injectable()
 export class TasksService {
   constructor(
     @InjectRepository(Task)
-    private readonly tasksRepository: ITaskRepository,
+    private readonly tasksRepository: ITasksRepository,
   ) {}
   getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]> {
     return this.tasksRepository.getTasks(filterDto, user);
